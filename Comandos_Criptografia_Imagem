@@ -1,0 +1,32 @@
+scicv_Init ()
+
+// Comando para armazenar a imagem
+imread ('NOMEDAIMAGEM.EXTENSÃO')
+
+// Exemplo utilizado no video 
+image = imread ('PhotoGroup.jpg')
+
+
+// Comando para converter a imagem para preto e branco
+cvtColor (IMAGEMUTILIZADA,CV_BGR2GRAY)
+
+// Exemplo utilizado no video 
+ColorBW = cvtColor (image,CV_BGR2GRAY)
+
+
+// Comando para converter a matriz de inteiros para double e adicionar um ruído. Isso serve para que a decomposição funcione 
+corretamente, o ruído faz com que as linhas sejam diferentes mas não altera as imagens. 
+double (NOMEDAIMAGEMCONVERTIDAPARAPRETOEBRANCO(:,:))+rand(DIMENSÃODAIMAGEM);
+
+// Exemplo utilizado no video. A matriz foi denominada de K.
+K = double (ColorBW (:,:))+rand(537,537);
+
+
+// Chamada da função
+[L,U] = decomposicaoLU (K);
+
+// Comando para a visualização da imagem 
+matplot ()
+
+// Exemplo utilizado no video 
+matplot (L*U)
